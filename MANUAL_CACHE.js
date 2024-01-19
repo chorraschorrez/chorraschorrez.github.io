@@ -41,6 +41,12 @@ lista = lista.map(function (){
 
 
 /* 
+Reducir resultado 
+*/ 
+
+
+
+/* 
 ##### @FILTER
 
 let dias = ['Lunes','Martes','Miércoles','Jueves','Viernes'];
@@ -79,4 +85,7 @@ Use account from: google gmail
     (My,,,01.)Mychorraschorrez01.
 
 - End point: chorras (e.g. chorras.free.app.beeceptor.com   )
+
+Poner en chrome, devuelve un json (respuesta de servidor con json): 
+https://dummyjson.com/products/1
 */ 

@@ -12,4 +12,3 @@ console.log(mascotas); //  ['PERRITO', 'GALLO']
 /* 
 Reducir resultado 
 */ 
-
