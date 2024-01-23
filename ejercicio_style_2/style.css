@@ -1,0 +1,19 @@
+#div-hoja{
+    position: absolute;
+    left:200px;
+    top:100px;
+}
+
+#div-leaf-A{
+    position: absolute;
+    left:300px;
+    top:100px;
+}
+
+
+footer{
+    ñosition: fixed;
+    width: 100%;
+    height:300px;
+    background-color:yellow;
+}

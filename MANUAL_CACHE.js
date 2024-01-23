@@ -17,6 +17,18 @@ https://www.eni-training.com/portal/client/mediabook/home
 
 
 
+@omdbapi.com
+--
+chorraschorrez@gmail.com
+
+omdbapi.com/apikey=cc1e061a&t=Batman&r=json
+
+
+function findMovie(title){
+    const API_KEY = 'cc1e061a';
+}
+
+
 */
 
 
@@ -37,7 +49,6 @@ lista = lista.map(function (){
     elemento = elemento.toUpperCase();
     return elemento;
 );
-
 
 
 /* 
@@ -89,3 +100,58 @@ Use account from: google gmail
 Poner en chrome, devuelve un json (respuesta de servidor con json): 
 https://dummyjson.com/products/1
 */ 
+
+
+
+
+
+
+
+
+
+// @http a mano, @manualmente:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Ficha">
+        <h1 id="title"></h1>
+    </div>
+    <div>
+        <img id="imagen" width="100px">
+    </div>    
+    <div>
+        <h1 id="description"></h1>
+    </div>   
+
+    
+</body>
+</html>
+
+<script>
+    const URL = "https://dummyjson.com/products/1";
+    var xmlHttp = new XMLHttpRequest     // Funciones callback, son las hechas por parte de alguien (hay un cambio en la petición, por tanto esa función se ejecuta).
+    xmlHttp.onreadystatechange = function () {  // Ojo ésta función no se ejecuta aún, sólo está escrita
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){ // Si ya ha respondido y es OK...
+            console.log(xmlHttp.responseText);
+            mostrar(JSON.parse(xmlHttp.responseText));  // Metodo de clase (ESTÁTICO)
+        }
+    }
+    xmlHttp.open("GET", URL, false); // Abrir petición de tipo GET (false es que es asíncrona, espero le respuesta)
+    xmlHttp.send(null); // 
+
+    function mostrar(producto){
+        document.querySelector("#title").innerHTML=producto.title;
+        //console.debug("producto.title:"+producto.title);  // iPhone 9
+        document.querySelector("#imagen").setAttribute("src",producto.thumbnail);         //console.debug("producto.title:"+producto.title);
+        
+        document.querySelector("#description").innerHTML=producto.description;
+        document.querySelector("#description").setAttribute("src",producto.description);
+    }
+
+</script>
