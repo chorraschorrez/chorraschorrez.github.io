@@ -132,7 +132,7 @@ https://dummyjson.com/products/1
     
 </body>
 </html>
-
+/*</head>
 <script>
     const URL = "https://dummyjson.com/products/1";
     var xmlHttp = new XMLHttpRequest     // Funciones callback, son las hechas por parte de alguien (hay un cambio en la petición, por tanto esa función se ejecuta).
@@ -155,3 +155,7 @@ https://dummyjson.com/products/1
     }
 
 </script>
+
+</html>
+
+*/

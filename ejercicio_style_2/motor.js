@@ -16,7 +16,7 @@ console.log("aaa x="+(x));
 
 // Mover primera hoja...
 setInterval( ()=> {
-    console.log ("MUEVE pos_y="+y); 
+    console.log ("MUEVE,hoja pos_y="+y); 
     hoja.style.top = (y+=DELTA)+"px";
     if (y>window.innerHeight){
         y=-100;
@@ -28,7 +28,7 @@ setInterval( ()=> {
 
 // Mover leaf-A...      habría que poner que éste tuviera sus variables x e y propias. 
 setInterval( ()=> {
-    console.log ("MUEVE pos_y="+y); 
+    console.log ("MUEVE,leaf_A: pos_y="+y); 
     leaf_A.style.top = (y+=DELTA)+"px";
     if (y>window.innerHeight){
         y=-100;
@@ -38,6 +38,13 @@ setInterval( ()=> {
 },17,17);  // Se ejecuta cuando... 
 
 
-setTimeout (function()){
-    document.querySelector("footer").style.bottom="-5em";
-}, 5000);
+
+// Info legal, recuadro que se muestra unos segundos y baja desapareciendon (no copiado completo)
+const TIEMPO_ESPERA = 5000
+
+setTimeout (function(){
+    let pie =document.querySelector("#pie-pagina");
+    pie.style.bottom="-5em";
+
+},TIEMPO_ESPERA);
+
