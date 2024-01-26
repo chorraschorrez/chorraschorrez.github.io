@@ -1,0 +1,36 @@
+main {
+    float: left
+}
+
+article {
+    flex: 0, 0, 20%;
+    margin: 2%;
+    border: 1 px, solid #ccc;
+    padding: 10 px;
+    box-shadow: 2px, 2px, 2px;
+}
+
+article img {
+    width: 50%px;
+    height: 50%px;
+}
+/*
+#div-buscador {
+    //text-align: ;
+}
+
+
+algo {
+    
+}
+
+algo {
+    
+}
+algo {
+    
+}
+*/
+
+
+
