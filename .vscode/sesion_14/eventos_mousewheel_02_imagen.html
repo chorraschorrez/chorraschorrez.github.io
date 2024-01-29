@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text id "info">
+    <img src="room2.jpeg" alt="">
+</body>
+</html>
+<script>
+
+/*
+// Hacer grande y pequeño
+const images = document.querySelectorAll("img");
+images.forEach(image => {
+    image.onwheel = (e) =>{
+        console.log(e.target.id);
+        let ancho = document.querySelector("#"+e.target.id).width;
+        ancho.deltaY;
+        console.log(ancho);
+        document.querySelector("#"+e.target.id).width = ancho;
+    }
+}
+);
+*/
+
+
+// Poner sombra (.boxShadow) al mover rueda ratón: 
+const images = document.querySelectorAll("img");
+images.forEach(image => {
+    image.onwheel = (e) =>{
+        console.log("Shadow" + e.target.style.boxShadow);
+        let bs = e.target.getAttribute('bs');    // coger image, que habremos puesto atributo inventado para boxShadow, bs ej. ->   <img bs="1" src="http://..." ...>
+        bs+=e.deltaY;
+        e.target.setAttribute('bs', bs);
+        e.targete.target.style.boxShadow = `${bs}px ${bs}px ${bs}px black`; 
+    }
+}
+);
+
+/*
+    // Al mover rueda de ratón, sale un log
+    document.querySelector("html").onwheel = (event, ()=>{
+        console.log("Rueda del ratón");
+        console.log(event.deltaY);
+    }
+    );
+
+
+    
+
+*/
+
+
+
+</script>
+
+
+/*
+Ejercicio
+Rueda de ratón. 
+Con el  gesto del ratón, hacer más grande la imagen donde el cursor del ratón.
+ 
+*/

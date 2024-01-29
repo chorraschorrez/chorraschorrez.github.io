@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos 1</title>
+</head>
+<body>
+    <button id="b1">Botón 1</button>    <button id="b2">Botón 2</button>
+</body>
+</html>
+<script>
+document.querySelector("#b1").onclick = () => {   // Asignación será eliminada por la siguientes
+    console.log("Acción 1 de b1");
+};
+
+document.querySelector("#b1").onclick = () => {     // Ésta segunda asignación elimina la anterior
+    console.log("Acción 2 de b1");
+};
+
+// Con addEventListener se acumulan los eventos
+document.querySelector("#b2").addEventListener("click",() => {
+    console.log("Acción 1 de b2");
+}
+);
+
+document.querySelector("#b2").addEventListener("click",() => {
+    console.log("Acción 2 de b2");
+}
+);
+
+</script>
