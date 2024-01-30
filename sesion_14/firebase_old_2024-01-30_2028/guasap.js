@@ -37,10 +37,8 @@ onValue(mensajes, (snapshot) => {
     divMensajes.innerHTML="";
   const data = snapshot.forEach(element => {
     console.log(element.val().emisor);
-    let direccion = element.val(element.val().emisor===id ? "derecha" : "izquierda");
+    let direccion = element.val(.emisor===id ? "derecha" : "izquierda");
     //(divMensajes.innerHTML+=`<br><strong>${element.val().emisor}</strong>:${element.val().mensaje}`;
-    divMensajes.innerHTML = `<div class='mensaje ${direccion}'>
-    <span class="emisor">${element.val().emisor}</span>:
-    ${element.val().mensaje}</div>` + divMensajes.innerHTML;
+
   });
 });
