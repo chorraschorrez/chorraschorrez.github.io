@@ -14,8 +14,9 @@
 
 
 
-
 <h1>Misc unordered</h1>
+
+/Users/tardes/Documents/GitHub/chorraschorrez.github.io/_Docu/javaScript_Guide.html
 
 <li>
     sudo chown -R tardes:staff pro_01
@@ -75,3 +76,211 @@ GitHub Desktop: menu Add local repository
 ng g c ./components/clienteweb --skip-tests
 
 ng g s ./services/conectorwebservice --skip-tests
+
+
+
+
+
+@ionic==========
+@INSTALACIÓN
+---------
+sudo npm install -g @ionic/cli
+
+ionic v
+
+@APLICACIÓN
+---------
+sudo ionic start miappionic
+
+
+. framework: 
+Angular
+
+. template:
+sidemenu
+
+. elegir: 
+NgModules
+
+
+// arranca en el puerto 8100
+ionic serve
+
+//permisos: 
+cd tardes
+sudo chown -R tardes:staff miappionic
+
+
+. Ir al código en tardes/miappionic/  
+. abrimos el index.html tiene etiquetas de componentes. Ahora son etiquetas ion-ALGO
+. En archivo "app.component.html", pego la etiqueta que quiera. 
+
+
+
+
+. @Hacer ejercicio, 
+===================
+
+// @CREAR PROYECTO APLICACION
+---
+
+sudo ionic start myionic_001
+
+// Framework: Angular
+
+// Template: sidemenu
+
+// App type: NgModules
+
+// Permisos en carpeta del proyecto: 
+sudo chown -R tardes:staff myionic_001
+
+
+
+// @SERVIDOR
+---
+cd myionic_001
+
+ionic serve
+
+// Se abrirá un browser, ej:  http://localhost:8100/folder/Inbox
+
+// En Visual Source Code , abrir esa carpeta de proyecto. 
+
+
+
+
+// app-routing.html
+// elemento "< ion-router-outlet >"
+ng g page ./pages/formulario/
+
+. cuando pulse Consulta, abrir ese componente. hacerlo en el component,,ts
+
+
+
+
+
+
+
+pppppppppppppppppppp
+. (...) VER HOJA FOLIO 32
+pppppppppppppppppp
+
+. Tocar formulario-page.html para que haya un <ion-header></ion-header>  , podemos copiar uno de folder-page.html
+
+. Crear servicio (en la carpeta de proyecto):
+
+ng g s ./sesrvices/httpdata
+
+
+. Rellenamos código ahí, en su .ts
+
+.(...)
+ 
+ 
+. En carpeta proyecto myionic_001: Creamos un page (un tipo de componente de Ionic) listado: 
+
+ng g page ./pages/listado
+
+. 
+
+
+
+
+
+
+ng g page ./pages/listado
+
+. EJERCICIO. MODIFICARLO:   para que al hacer clic en el menú Info, salga la page "page-listado", y que ahí se contenga un componente ion-list
+
+
+. app.components.ts, path listado
+
+
+
+
+
+ng g interface ./interface/pelicula
+
+en ese .ts poner: 
+
+export interface Pelicula {
+        title:string,
+        year:number,
+        cast:[],
+        genres:[],
+        href:string,
+        extract:string
+}
+
+
+
+. En archivo listado-page.html poner (el ngFor hace bucle por cada película), saldrá, al pulsar menú Info, el listado de películas: 
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>listado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let pelicula of peliculas">
+      <ion-label>{{pelicula.title}}</ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+
+
+
+. Ahora sale en la lista el título. Hay que añadir la imagen (las películas que tengan, en el json no todas tienen)
+
+
+
+
+
+
+
+
+
+
+. @EJERCICIO. el json tiene un campo thumbnail, añadir ese campo thumbnail:
+
+* pelicula.ts añadir texto->  thumbnail:string: 
+
+export interface Pelicula {
+        title:string,
+        year:number,
+        cast:[],
+        genres:[],
+        href:string,
+        extract:string, 
+        thumbnail:string
+}
+ 
+
+
+. listado.page.html, modificar para que quede ésta línea: 
+      <img [src]="pelicula.thumbnail"><img>
+quedando así: 
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>listado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let pelicula of peliculas">
+      <ion-label>{{pelicula.title}}</ion-label>
+      /* <ion-img *ngIf="pelicula.thumbnail!==undefined" src={{pelicula.thumbnail}} style="width: 80px;"></ion-img>     // Esto muestra img rotas si vacías   */ 
+      <img [src]="pelicula.thumbnail"><img>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+ 
+ 
