@@ -44,7 +44,22 @@
 </body>
 </html>
 
-pedir identificacion, buscamos en lista de palabras que no exista ya. 
+
+
+
+
+
+
+
+
+
+@GitHub:
+-------------------------- 
+Commits subir con nota ej. 
+2024-02-14_16:30   (fromClass) (fromHome) 
+
+
+Pedir identificacion, buscamos en lista de palabras que no exista ya. 
 
 
 
@@ -81,16 +96,23 @@ ng g s ./services/conectorwebservice --skip-tests
 
 
 
-@ionic==========
+@Ionic
+==========
+
 @INSTALACIÓN
----------
+---------------------------------------------
 sudo npm install -g @ionic/cli
 
 ionic v
 
-@APLICACIÓN
----------
+@APLICACIÓN CREAR
+---------------------------------------------
+(Ej. crear aplicación en carpeta miappionic)
 sudo ionic start miappionic
+
+//permisos: 
+cd tardes
+sudo chown -R tardes:staff miappionic
 
 
 . framework: 
@@ -102,13 +124,12 @@ sidemenu
 . elegir: 
 NgModules
 
-
+* Arrancar projecto Ionic
+---------------------------------------------
 // arranca en el puerto 8100
 ionic serve
 
-//permisos: 
-cd tardes
-sudo chown -R tardes:staff miappionic
+
 
 
 . Ir al código en tardes/miappionic/  
@@ -137,8 +158,9 @@ sudo chown -R tardes:staff myionic_001
 
 
 
-// @SERVIDOR
+// @SERVIDOR. * Arrancar projecto Ionic
 ---
+(crearemo un proyecto en la carpeta myionic_001 (.../GitHub/myionic_001 ))
 cd myionic_001
 
 ionic serve
@@ -276,7 +298,7 @@ quedando así:
   <ion-list>
     <ion-item *ngFor="let pelicula of peliculas">
       <ion-label>{{pelicula.title}}</ion-label>
-      /* <ion-img *ngIf="pelicula.thumbnail!==undefined" src={{pelicula.thumbnail}} style="width: 80px;"></ion-img>     // Esto muestra img rotas si vacías   */ 
+      <!-- <ion-img *ngIf="pelicula.thumbnail!==undefined" src={{pelicula.thumbnail}} style="width: 80px;"></ion-img>     --Esto muestra img rotas si vacías   -->
       <img [src]="pelicula.thumbnail"><img>
     </ion-item>
 
