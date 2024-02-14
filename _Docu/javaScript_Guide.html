@@ -56,7 +56,7 @@
 @GitHub:
 -------------------------- 
 Commits subir con nota ej. 
-2024-02-14_16:30   (fromClass) (fromHome) 
+2024-02-14_16:30   (_fromClass) (_fromHome) 
 
 
 Pedir identificacion, buscamos en lista de palabras que no exista ya. 
@@ -72,8 +72,121 @@ Pedir identificacion, buscamos en lista de palabras que no exista ya.
 
 
 
+
+@Angular mi resúmen:
+-------------------------- 
+(@service HTTP , Create service HTTP)
+* @References: @Tutorial, "Creating a movie fetching service in Angular", https://dev.to/dailydevtips1/creating-a-movie-fetching-service-in-angular-338h
+
+* Go app.module.ts (,,,)
+--
+- Add: 
+
+import { HttpClientModule } from '@angular/common/http';
+
+
+- Add: 
+
+@NgModule({
+  declarations: [
+        // All declarations
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    // Other imports
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+
+- Terminal: Create service: 
+
+ng generate class movie ./
+
+. (alternatives: create an interface called pelicula: ng g interface ./interface/pelicula   )
+
+. Fill movie.ts : 
+
+	* File movie.ts
+	--
+	export class Movie {
+	    Poster: string;
+	    Title: string;
+	    Type: string;
+	    Year: string;
+	    imdbID: string;
+	}
+
+
+
+. Generate service:
+
+. On terminal: 
+
+ng generate service movie
+. (alternatives:  ng generate service httpdata ./services/httpdata --skip-tests     )
+
+. Add content: 
+
+	* File movie.service.ts
+	--
+	
+	import { HttpClient } from '@angular/common/http';
+	import { Injectable } from '@angular/core';
+	import { Movie } from './movie';
+	
+	export type ApiResponse = {
+	  Response: string;
+	  Search: Movie[];
+	  totalResults: string;
+	};
+	
+	@Injectable({
+	  providedIn: 'root'
+	})
+	export class MovieService {
+	  apiURL: string = 'http://www.omdbapi.com/?apikey={key}';
+	
+	  constructor(private httpClient: HttpClient) {}
+	}
+
+
+
+. Add search method to it: 
+
+	* File movie.service.ts
+	--
+	(...)
+	searchMovie(name: string) {
+	    return this.httpClient.get<any>(`${this.apiURL}&s=${name}`);
+	}
+	(...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================
 @pelisweb proyecto 
-=========
+========================================================================================
 2024-02-12_2032_pelisweb
 
 https://fpaniaguajavascript.github.io/movies/movies-1900s.json
@@ -140,7 +253,7 @@ ionic serve
 
 
 . @Hacer ejercicio, 
-===================
+================================================
 
 // @CREAR PROYECTO APLICACION
 ---
@@ -158,9 +271,22 @@ sudo chown -R tardes:staff myionic_001
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // @SERVIDOR. * Arrancar projecto Ionic
+
 ---
-(crearemo un proyecto en la carpeta myionic_001 (.../GitHub/myionic_001 ))
+(crearemoS un proyecto en la carpeta myionic_001 (.../GitHub/myionic_001 ))
 cd myionic_001
 
 ionic serve
@@ -185,7 +311,7 @@ ng g page ./pages/formulario/
 
 
 pppppppppppppppppppp
-. (...) VER HOJA FOLIO 32
+. (...) Verbatim de apuntes, VER HOJA FOLIO 32
 pppppppppppppppppp
 
 . Tocar formulario-page.html para que haya un <ion-header></ion-header>  , podemos copiar uno de folder-page.html
@@ -211,9 +337,24 @@ ng g page ./pages/listado
 
 
 
-ng g page ./pages/listado
 
-. EJERCICIO. MODIFICARLO:   para que al hacer clic en el menú Info, salga la page "page-listado", y que ahí se contenga un componente ion-list
+
+
+
+
+
+
+
+
+
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+. @EJERCICIO. MODIFICARLO:   para que al hacer clic en el menú Info, salga la page "page-listado", y que ahí se contenga un componente ion-list
+ffffffffffffffffffffffffffffffffffffffffffffffff
+(Recordar):  
+- Terminal hacer cd a la carpeta de proyecto: (.../GitHub/myionic_001 )) 
+- Reiniciar server (en el puerto, port: 8100):     ionic serve    
+- Browser, open current app (the folder we're in, myionic_001 ) at the URL: http://localhost:8100/
 
 
 . app.components.ts, path listado
@@ -306,3 +447,55 @@ quedando así:
 </ion-content>
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ (@Seguir con las cosas del enunciado de los folios de apuntes, página 31 por detrás)
+ ------
+ 
+
+ * Nota: Ejemplo, key, etc. en: /Users/tardes/Documents/GitHub/CURSO_js-ionic-20240102/sesion09/omdb/index.html
+
+* File key aquí: 
+file:///Users/tardes/Documents/GitHub/chorraschorrez.github.io/omdb.js
+
+
+
+
+
+
+
+
+@CORRECCIÓN DEL PROFE (explicación de sus añadidos, que imagino subirá)
+--
+
+
+ . A partir del JSON retornado de omdb, obtener un Interface de JSON (hay webs herramienta, ej. Transform tools) para ver la pinta. 
+ . Se pone en pelicula.ts
+ . En la página formulario.page.html, de formulario, poner (creo que en un <ion-content>), poner dentro un ion-content, y un ionic-ALGO input, un botón de buscar, una imagen y una lista por item para poner detalle de dsatos como título, año director...
+ . Observar que ahí, cuando hay cosas dinámicas interpoladas como {{,,,.titulo}} significa que ese campo está en el ts correspondiente, en éste caso: formulario.page.ts. 
+ . httpdata.service.ts. Hay en el export class: un "const parametros"", ponemos ahí la apikey, y la t (título que se pone en la url de pedir película). 
+ . Observar que se hace un GET (no un post). En otros casos hemos usado lo otro, pero en éste caso concreto eso da igual, aunque sea más complicado pues hay que enviar unos append para construir la cadena de la petición. 
+ . Ojo, el OMDB_API_KEY, en httpdata.service.ts, habría que importarla del environment: podría ser que eso no sea igual en desarrollo que en producción. Por eso, éste tipo de parámetros se debería meter en environment.ts (es más adecuado meter constantes ahí). Creo que lo normal es ponerse aquí qué fichero de constantes a cargar. 
+ . 
+
+. La gestiópn de la petición, formulario.page.ts, está el: this.httpds.getMovie(this.titulo).subscribe( ...
+. ahí hay un .subscribe, con el data. Eso es cuando todo ha ido bien (habría que contemplar otros casos, por eso se pone next, error, complete). 
+. Como esa petición tarda un ratito, en una variable con un nG, vamos metiéndo todo. 
+. Luego hay que interpolar todo en el formulario. 
+
+
+
+
+
+.  
