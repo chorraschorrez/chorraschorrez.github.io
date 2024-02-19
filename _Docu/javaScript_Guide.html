@@ -145,8 +145,8 @@ ng generate service movie
 	
 	@Injectable({
 	  providedIn: 'root'
-	})
 	export class MovieService {
+	})
 	  apiURL: string = 'http://www.omdbapi.com/?apikey={key}';
 	
 	  constructor(private httpClient: HttpClient) {}
@@ -498,4 +498,74 @@ file:///Users/tardes/Documents/GitHub/chorraschorrez.github.io/omdb.js
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .  
+------------------------------------------------------------
+(* @Clase_25-02-2024 16:00)(@Sesión_27)
+
+// Angular e Ionic, instalar base de datos
+
+* Terminal
+cd (cd ruta de carpeta myionic_001)
+
+sudo npm install @ionic/storage-angular
+(asks for pwd of user tardes)
+
+
+
+* File app.module.ts
+==
+
+Add import: 
+import { IonicStorageModule } from '@ionic/storage-angular';
+
+Modify, to add import: 
+  imports: [  (...)  , IonicStorageModule], 
+
+
+
+(create service∫)
+* Terminal
+cd (cd ruta de carpeta myionic_001)
+
+ionic generate service ./services/servicelocaldb --skip-tests
+
+
+
+
+* File: servicelocaldb.service.ts
+==
+
+- Add imports: 
+
+import { Storage } from '@ionic/storage-angular';
+import { Observable } from 'rxjs';
+
+
+- Add constructor, and init: 
+
+  constructor(private storage:Storage) { 
+    this.init();
+  }
+
+  async init(){
+    this.storage = await this.storage.create();
+  }
